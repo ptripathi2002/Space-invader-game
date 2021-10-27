@@ -86,14 +86,15 @@ function moveInvaders()
     const rightEdge = alienInvaders[alienInvaders.length - 1] % width === width-1
     remove()
     
-    if(rightEdge && goingRight){
+    if(rightEdge && goingRight)
+    {
     for(let i =0;i<alienInvaders.length;i++)
     {
         alienInvaders[i] += width+1
         direction = -1
         goingRight = false
     }
-}
+   }
 
 
     if(leftEdge && !goingRight)
@@ -146,38 +147,34 @@ function shoot(e)
 {
     let laserId
     let currentLaserIndex = currentShooterIndex
-    function moveLaser() {
+    function moveLaser()
+    {
         squares[currentLaserIndex].classList.remove('laser')
         currentLaserIndex -= width
         squares[currentLaserIndex].classList.add('laser')
 
-        if(squares[currentLaserIndex].classList.contains('inavader'))
+        if(squares[currentLaserIndex].classList.contains('invader'))
         {
             squares[currentLaserIndex].classList.remove('laser')
             squares[currentLaserIndex].classList.remove('invader')
             squares[currentLaserIndex].classList.add('boom')
 
-            setTimeout(()=> squares[currentLaserIndex].classList.remove('boom'), 300)
+
+            setTimeout(()=> squares[currentLaserIndex].classList.remove('boom'),300)
             clearInterval(laserId)
 
             const alienRemoved = alienInvaders.indexOf(currentLaserIndex)
             aliensRemoved.push(alienRemoved)
-            results++
             resultsDisplay.innerHTML = results
-
-            console.log(aliensRemoved)
-
+            results++
         }
     }
 
-
-        switch(e.key)
-        {
+    switch(e.key)
+    {
         case 'ArrowUp':
-            laserId = setInterval(moveLaser, 100)
-        }
+            laserId = setInterval(moveLaser,100)
     }
+}
 
-
-
-document.addEventListener('keydown', shoot)
+document.addEventListener('keydown',shoot)
