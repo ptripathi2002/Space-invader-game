@@ -1,3 +1,4 @@
+alert("Click OK to start the game");
 const grid = document.querySelector('.grid')
 let currentShooterIndex = 202
 let width = 15
@@ -10,8 +11,8 @@ const resultsDisplay = document.querySelector('.results')
 
 for(let i =0;i<225;i++)
 {
-    const square = document.createElement('div');
-    grid.appendChild(square);
+    const square = document.createElement('div')
+    grid.appendChild(square)
 }
 
 const squares = Array.from(document.querySelectorAll('.grid div'))
@@ -134,12 +135,12 @@ function moveInvaders()
     
        if(aliensRemoved.length === alienInvaders.length)
        {
-            resultsDisplay.innerHTML = "YOU WIN"
+            resultsDisplay.innerHTML = 'YOU WIN'
             clearInterval(invadersId)
        }
  }
  
-invadersId = setInterval(moveInvaders,300)
+invadersId = setInterval(moveInvaders,500)
 
 
 
@@ -165,8 +166,10 @@ function shoot(e)
 
             const alienRemoved = alienInvaders.indexOf(currentLaserIndex)
             aliensRemoved.push(alienRemoved)
-            resultsDisplay.innerHTML = results
             results++
+            resultsDisplay.innerHTML = results
+            console.log(aliensRemoved)
+            
         }
     }
 
