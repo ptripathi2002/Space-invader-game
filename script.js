@@ -1,3 +1,4 @@
+alert("Click OK to start the game");
 const grid = document.querySelector('.grid')
 let currentShooterIndex = 202
 let width = 15
